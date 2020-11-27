@@ -1,0 +1,511 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: yVaultPrizePoolBuilder
+    network: mainnet
+    source:
+      address: "0xef3d36A282e74b5bcba8a45262687DDb31495Cd2"
+      abi: yVaultPrizePoolBuilder
+      startBlock: 11101046
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - yVaultPrizePoolBuilderPrizePoolCreatedEvent
+        - yVaultPrizePoolBuildercreateSingleRandomWinnerCall
+        - yVaultPrizePoolBuildercreateyVaultPrizePoolCall
+      abis:
+        - name: yVaultPrizePoolBuilder
+          file: ./abis/yVaultPrizePoolBuilder.json
+      callHandlers:
+        - function: createSingleRandomWinner((address,uint256,uint256,uint256),(address,uint256,uint256,string,string,string,string,uint256,uint256,address[]),uint8)
+          handler: handlecreateSingleRandomWinnerCall
+        - function: createyVaultPrizePool((address,uint256,uint256,uint256))
+          handler: handlecreateyVaultPrizePoolCall
+      eventHandlers:
+        - event: PrizePoolCreated(indexed address,indexed address)
+          handler: handlePrizePoolCreatedEvent
+      file: ./src/yVaultPrizePoolBuilderMapping.ts
+  - kind: ethereum/contract
+    name: StakePrizePoolBuilder
+    network: mainnet
+    source:
+      address: "0x6dc7cA9e2c19Da475B39cce7437994c1725d85C9"
+      abi: StakePrizePoolBuilder
+      startBlock: 11101048
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - StakePrizePoolBuilderPrizePoolCreatedEvent
+        - StakePrizePoolBuildercreateSingleRandomWinnerCall
+        - StakePrizePoolBuildercreateStakePrizePoolCall
+      abis:
+        - name: StakePrizePoolBuilder
+          file: ./abis/StakePrizePoolBuilder.json
+      callHandlers:
+        - function: createSingleRandomWinner((address,uint256,uint256),(address,uint256,uint256,string,string,string,string,uint256,uint256,address[]),uint8)
+          handler: handlecreateSingleRandomWinnerCall
+        - function: createStakePrizePool((address,uint256,uint256))
+          handler: handlecreateStakePrizePoolCall
+      eventHandlers:
+        - event: PrizePoolCreated(indexed address,indexed address)
+          handler: handlePrizePoolCreatedEvent
+      file: ./src/StakePrizePoolBuilderMapping.ts
+  - kind: ethereum/contract
+    name: SingleRandomWinnerBuilder
+    network: mainnet
+    source:
+      address: "0xa6358441F68eD4707E1c4366a0D2E2233bB4841D"
+      abi: SingleRandomWinnerBuilder
+      startBlock: 11101041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - SingleRandomWinnerBuilderSingleRandomWinnerCreatedEvent
+        - SingleRandomWinnerBuildercreateSingleRandomWinnerCall
+      abis:
+        - name: SingleRandomWinnerBuilder
+          file: ./abis/SingleRandomWinnerBuilder.json
+      callHandlers:
+        - function: createSingleRandomWinner(address,(address,uint256,uint256,string,string,string,string,uint256,uint256,address[]),uint8,address)
+          handler: handlecreateSingleRandomWinnerCall
+      eventHandlers:
+        - event: SingleRandomWinnerCreated(indexed address,indexed address,indexed address)
+          handler: handleSingleRandomWinnerCreatedEvent
+      file: ./src/SingleRandomWinnerBuilderMapping.ts
+  - kind: ethereum/contract
+    name: Registry
+    network: mainnet
+    source:
+      address: "0x3e8b9901dBFE766d3FE44B36c180A1bca2B9A295"
+      abi: Registry
+      startBlock: 11101020
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - RegistryOwnershipTransferredEvent
+        - RegistryRegisteredEvent
+        - RegistryregisterCall
+        - RegistryrenounceOwnershipCall
+        - RegistrytransferOwnershipCall
+      abis:
+        - name: Registry
+          file: ./abis/Registry.json
+      callHandlers:
+        - function: register(address)
+          handler: handleregisterCall
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+        - event: Registered(indexed address)
+          handler: handleRegisteredEvent
+      file: ./src/RegistryMapping.ts
+  - kind: ethereum/contract
+    name: Reserve
+    network: mainnet
+    source:
+      address: "0xdb8E47BEFe4646fCc62BE61EEE5DF350404c124F"
+      abi: Reserve
+      startBlock: 11101019
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ReserveOwnershipTransferredEvent
+        - ReserveReserveRateMantissaSetEvent
+        - ReserverenounceOwnershipCall
+        - ReservesetRateMantissaCall
+        - ReservetransferOwnershipCall
+        - ReservewithdrawReserveCall
+      abis:
+        - name: Reserve
+          file: ./abis/Reserve.json
+      callHandlers:
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: setRateMantissa(uint256)
+          handler: handlesetRateMantissaCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: withdrawReserve(address,address)
+          handler: handlewithdrawReserveCall
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+        - event: ReserveRateMantissaSet(uint256)
+          handler: handleReserveRateMantissaSetEvent
+      file: ./src/ReserveMapping.ts
+  - kind: ethereum/contract
+    name: ControlledTokenBuilder
+    network: mainnet
+    source:
+      address: "0x03e75AeEB92adD6f3b168412671360eB94f0dBf7"
+      abi: ControlledTokenBuilder
+      startBlock: 11101036
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ControlledTokenBuilderCreatedControlledTokenEvent
+        - ControlledTokenBuilderCreatedTicketEvent
+        - ControlledTokenBuildercreateControlledTokenCall
+        - ControlledTokenBuildercreateTicketCall
+      abis:
+        - name: ControlledTokenBuilder
+          file: ./abis/ControlledTokenBuilder.json
+      callHandlers:
+        - function: createControlledToken((string,string,uint8,address))
+          handler: handlecreateControlledTokenCall
+        - function: createTicket((string,string,uint8,address))
+          handler: handlecreateTicketCall
+      eventHandlers:
+        - event: CreatedControlledToken(indexed address)
+          handler: handleCreatedControlledTokenEvent
+        - event: CreatedTicket(indexed address)
+          handler: handleCreatedTicketEvent
+      file: ./src/ControlledTokenBuilderMapping.ts
+  - kind: ethereum/contract
+    name: Comptroller
+    network: mainnet
+    source:
+      address: "0x4027dE966127af5F015Ea1cfd6293a3583892668"
+      abi: Comptroller
+      startBlock: 11101017
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ComptrollerBalanceDripActivatedEvent
+        - ComptrollerBalanceDripDeactivatedEvent
+        - ComptrollerBalanceDripDrippedEvent
+        - ComptrollerBalanceDripRateSetEvent
+        - ComptrollerDripTokenClaimedEvent
+        - ComptrollerDripTokenDrippedEvent
+        - ComptrollerOwnershipTransferredEvent
+        - ComptrollerTransferredOutEvent
+        - ComptrollerVolumeDripActivatedEvent
+        - ComptrollerVolumeDripDeactivatedEvent
+        - ComptrollerVolumeDripDrippedEvent
+        - ComptrollerVolumeDripPeriodEndedEvent
+        - ComptrollerVolumeDripPeriodStartedEvent
+        - ComptrollerVolumeDripSetEvent
+        - ComptrolleractivateBalanceDripCall
+        - ComptrolleractivateVolumeDripCall
+        - ComptrollerbeforeTokenMintCall
+        - ComptrollerbeforeTokenTransferCall
+        - ComptrollercaptureClaimsForBalanceDripsForPairsCall
+        - ComptrollerclaimDripCall
+        - ComptrollerclaimDripsCall
+        - ComptrollerdeactivateBalanceDripCall
+        - ComptrollerdeactivateVolumeDripCall
+        - ComptrollermintAndCaptureVolumeDripsForPairsCall
+        - ComptrollerrenounceOwnershipCall
+        - ComptrollersetBalanceDripRateCall
+        - ComptrollersetVolumeDripCall
+        - ComptrollertransferOutCall
+        - ComptrollertransferOwnershipCall
+        - ComptrollerupdateActiveBalanceDripsForPairsCall
+        - ComptrollerupdateActiveVolumeDripsForPairsCall
+        - ComptrollerupdateAndClaimDripsCall
+        - ComptrollerupdateDripsCall
+      abis:
+        - name: Comptroller
+          file: ./abis/Comptroller.json
+      callHandlers:
+        - function: activateBalanceDrip(address,address,address,uint256)
+          handler: handleactivateBalanceDripCall
+        - function: activateVolumeDrip(address,address,address,bool,uint32,uint112,uint32)
+          handler: handleactivateVolumeDripCall
+        - function: beforeTokenMint(address,uint256,address,address)
+          handler: handlebeforeTokenMintCall
+        - function: beforeTokenTransfer(address,address,uint256,address)
+          handler: handlebeforeTokenTransferCall
+        - function: captureClaimsForBalanceDripsForPairs(address,address[])
+          handler: handlecaptureClaimsForBalanceDripsForPairsCall
+        - function: claimDrip(address,address,uint256)
+          handler: handleclaimDripCall
+        - function: claimDrips(address,address[])
+          handler: handleclaimDripsCall
+        - function: deactivateBalanceDrip(address,address,address,address)
+          handler: handledeactivateBalanceDripCall
+        - function: deactivateVolumeDrip(address,address,address,bool,address)
+          handler: handledeactivateVolumeDripCall
+        - function: mintAndCaptureVolumeDripsForPairs(address,uint256,address[])
+          handler: handlemintAndCaptureVolumeDripsForPairsCall
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: setBalanceDripRate(address,address,address,uint256)
+          handler: handlesetBalanceDripRateCall
+        - function: setVolumeDrip(address,address,address,bool,uint32,uint112)
+          handler: handlesetVolumeDripCall
+        - function: transferOut(address,address,uint256)
+          handler: handletransferOutCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: updateActiveBalanceDripsForPairs()
+          handler: handleupdateActiveBalanceDripsForPairsCall
+        - function: updateActiveVolumeDripsForPairs()
+          handler: handleupdateActiveVolumeDripsForPairsCall
+        - function: updateAndClaimDrips(address,address[])
+          handler: handleupdateAndClaimDripsCall
+        - function: updateDrips(address,address[])
+          handler: handleupdateDripsCall
+      eventHandlers:
+        - event: BalanceDripActivated(indexed address,indexed address,indexed address,uint256)
+          handler: handleBalanceDripActivatedEvent
+        - event: BalanceDripDeactivated(indexed address,indexed address,indexed address)
+          handler: handleBalanceDripDeactivatedEvent
+        - event: BalanceDripDripped(indexed address,indexed address,indexed address,address,uint256)
+          handler: handleBalanceDripDrippedEvent
+        - event: BalanceDripRateSet(indexed address,indexed address,indexed address,uint256)
+          handler: handleBalanceDripRateSetEvent
+        - event: DripTokenClaimed(indexed address,indexed address,indexed address,uint256)
+          handler: handleDripTokenClaimedEvent
+        - event: DripTokenDripped(indexed address,indexed address,uint256)
+          handler: handleDripTokenDrippedEvent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+        - event: TransferredOut(indexed address,indexed address,uint256)
+          handler: handleTransferredOutEvent
+        - event: VolumeDripActivated(indexed address,indexed address,indexed address,bool,uint256,uint256)
+          handler: handleVolumeDripActivatedEvent
+        - event: VolumeDripDeactivated(indexed address,indexed address,indexed address,bool)
+          handler: handleVolumeDripDeactivatedEvent
+        - event: VolumeDripDripped(indexed address,indexed address,indexed address,bool,address,uint256)
+          handler: handleVolumeDripDrippedEvent
+        - event: VolumeDripPeriodEnded(indexed address,indexed address,indexed address,bool,uint32,uint256,uint256)
+          handler: handleVolumeDripPeriodEndedEvent
+        - event: VolumeDripPeriodStarted(indexed address,indexed address,indexed address,bool,uint32,uint256,uint256)
+          handler: handleVolumeDripPeriodStartedEvent
+        - event: VolumeDripSet(indexed address,indexed address,indexed address,bool,uint256,uint256)
+          handler: handleVolumeDripSetEvent
+      file: ./src/ComptrollerMapping.ts
+  - kind: ethereum/contract
+    name: CompoundPrizePoolBuilder
+    network: mainnet
+    source:
+      address: "0xCB876f60399897db24058b2d58D0B9f713175eeF"
+      abi: CompoundPrizePoolBuilder
+      startBlock: 11101043
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - CompoundPrizePoolBuilderPrizePoolCreatedEvent
+        - CompoundPrizePoolBuildercreateCompoundPrizePoolCall
+        - CompoundPrizePoolBuildercreateSingleRandomWinnerCall
+      abis:
+        - name: CompoundPrizePoolBuilder
+          file: ./abis/CompoundPrizePoolBuilder.json
+      callHandlers:
+        - function: createCompoundPrizePool((address,uint256,uint256))
+          handler: handlecreateCompoundPrizePoolCall
+        - function: createSingleRandomWinner((address,uint256,uint256),(address,uint256,uint256,string,string,string,string,uint256,uint256,address[]),uint8)
+          handler: handlecreateSingleRandomWinnerCall
+      eventHandlers:
+        - event: PrizePoolCreated(indexed address,indexed address)
+          handler: handlePrizePoolCreatedEvent
+      file: ./src/CompoundPrizePoolBuilderMapping.ts
+  - kind: ethereum/contract
+    name: PermitAndDepositDai
+    network: mainnet
+    source:
+      address: "0x8a4416453340ECF6c489eFf3030EDb632b0087B2"
+      abi: PermitAndDepositDai
+      startBlock: 11107144
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - PermitAndDepositDaiOwnershipTransferredEvent
+        - PermitAndDepositDaidepositToCall
+        - PermitAndDepositDaipermitAndDepositToCall
+        - PermitAndDepositDairenounceOwnershipCall
+        - PermitAndDepositDaitransferOwnershipCall
+      abis:
+        - name: PermitAndDepositDai
+          file: ./abis/PermitAndDepositDai.json
+      callHandlers:
+        - function: depositTo(address,address,address,uint256,address,address)
+          handler: handledepositToCall
+        - function: permitAndDepositTo(address,address,uint256,uint256,bool,uint8,bytes32,bytes32,address,address,uint256,address,address)
+          handler: handlepermitAndDepositToCall
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+      file: ./src/PermitAndDepositDaiMapping.ts
+  - kind: ethereum/contract
+    name: CompoundPrizePool
+    network: mainnet
+    source:
+      address: "0xEBfb47A7ad0FD6e57323C8A42B2E5A6a4F68fc1a"
+      abi: CompoundPrizePool
+      startBlock: 11104417
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - CompoundPrizePoolAwardCapturedEvent
+        - CompoundPrizePoolAwardedEvent
+        - CompoundPrizePoolAwardedExternalERC20Event
+        - CompoundPrizePoolAwardedExternalERC721Event
+        - CompoundPrizePoolCompoundPrizePoolInitializedEvent
+        - CompoundPrizePoolControlledTokenAddedEvent
+        - CompoundPrizePoolCreditBurnedEvent
+        - CompoundPrizePoolCreditMintedEvent
+        - CompoundPrizePoolCreditPlanSetEvent
+        - CompoundPrizePoolDepositedEvent
+        - CompoundPrizePoolInitializedEvent
+        - CompoundPrizePoolInstantWithdrawalEvent
+        - CompoundPrizePoolLiquidityCapSetEvent
+        - CompoundPrizePoolOwnershipTransferredEvent
+        - CompoundPrizePoolPrizeStrategySetEvent
+        - CompoundPrizePoolReserveFeeCapturedEvent
+        - CompoundPrizePoolReserveWithdrawalEvent
+        - CompoundPrizePoolTimelockDepositedEvent
+        - CompoundPrizePoolTimelockedWithdrawalEvent
+        - CompoundPrizePoolTimelockedWithdrawalSweptEvent
+        - CompoundPrizePoolTransferredExternalERC20Event
+        - CompoundPrizePooladdControlledTokenCall
+        - CompoundPrizePoolawardCall
+        - CompoundPrizePoolawardExternalERC20Call
+        - CompoundPrizePoolawardExternalERC721Call
+        - CompoundPrizePoolbalanceCall
+        - CompoundPrizePoolbalanceOfCreditCall
+        - CompoundPrizePoolbeforeTokenTransferCall
+        - CompoundPrizePoolcalculateEarlyExitFeeCall
+        - CompoundPrizePoolcalculateTimelockDurationCall
+        - CompoundPrizePoolcaptureAwardBalanceCall
+        - CompoundPrizePooldepositToCall
+        - CompoundPrizePoolinitializeCall
+        - CompoundPrizePoolinitialize1Call
+        - CompoundPrizePoolrenounceOwnershipCall
+        - CompoundPrizePoolsetCreditPlanOfCall
+        - CompoundPrizePoolsetLiquidityCapCall
+        - CompoundPrizePoolsetPrizeStrategyCall
+        - CompoundPrizePoolsweepTimelockBalancesCall
+        - CompoundPrizePooltimelockDepositToCall
+        - CompoundPrizePooltransferExternalERC20Call
+        - CompoundPrizePooltransferOwnershipCall
+        - CompoundPrizePoolwithdrawInstantlyFromCall
+        - CompoundPrizePoolwithdrawReserveCall
+        - CompoundPrizePoolwithdrawWithTimelockFromCall
+      abis:
+        - name: CompoundPrizePool
+          file: ./abis/CompoundPrizePool.json
+      callHandlers:
+        - function: addControlledToken(address)
+          handler: handleaddControlledTokenCall
+        - function: award(address,uint256,address)
+          handler: handleawardCall
+        - function: awardExternalERC20(address,address,uint256)
+          handler: handleawardExternalERC20Call
+        - function: awardExternalERC721(address,address,uint256[])
+          handler: handleawardExternalERC721Call
+        - function: balance()
+          handler: handlebalanceCall
+        - function: balanceOfCredit(address,address)
+          handler: handlebalanceOfCreditCall
+        - function: beforeTokenTransfer(address,address,uint256)
+          handler: handlebeforeTokenTransferCall
+        - function: calculateEarlyExitFee(address,address,uint256)
+          handler: handlecalculateEarlyExitFeeCall
+        - function: calculateTimelockDuration(address,address,uint256)
+          handler: handlecalculateTimelockDurationCall
+        - function: captureAwardBalance()
+          handler: handlecaptureAwardBalanceCall
+        - function: depositTo(address,uint256,address,address)
+          handler: handledepositToCall
+        - function: initialize(address,address,address[],uint256,uint256)
+          handler: handleinitializeCall
+        - function: initialize(address,address,address[],uint256,uint256,address)
+          handler: handleinitialize1Call
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: setCreditPlanOf(address,uint128,uint128)
+          handler: handlesetCreditPlanOfCall
+        - function: setLiquidityCap(uint256)
+          handler: handlesetLiquidityCapCall
+        - function: setPrizeStrategy(address)
+          handler: handlesetPrizeStrategyCall
+        - function: sweepTimelockBalances(address[])
+          handler: handlesweepTimelockBalancesCall
+        - function: timelockDepositTo(address,uint256,address)
+          handler: handletimelockDepositToCall
+        - function: transferExternalERC20(address,address,uint256)
+          handler: handletransferExternalERC20Call
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: withdrawInstantlyFrom(address,uint256,address,uint256)
+          handler: handlewithdrawInstantlyFromCall
+        - function: withdrawReserve(address)
+          handler: handlewithdrawReserveCall
+        - function: withdrawWithTimelockFrom(address,uint256,address)
+          handler: handlewithdrawWithTimelockFromCall
+      eventHandlers:
+        - event: AwardCaptured(uint256)
+          handler: handleAwardCapturedEvent
+        - event: Awarded(indexed address,indexed address,uint256)
+          handler: handleAwardedEvent
+        - event: AwardedExternalERC20(indexed address,indexed address,uint256)
+          handler: handleAwardedExternalERC20Event
+        - event: AwardedExternalERC721(indexed address,indexed address,uint256[])
+          handler: handleAwardedExternalERC721Event
+        - event: CompoundPrizePoolInitialized(indexed address)
+          handler: handleCompoundPrizePoolInitializedEvent
+        - event: ControlledTokenAdded(indexed address)
+          handler: handleControlledTokenAddedEvent
+        - event: CreditBurned(indexed address,indexed address,uint256)
+          handler: handleCreditBurnedEvent
+        - event: CreditMinted(indexed address,indexed address,uint256)
+          handler: handleCreditMintedEvent
+        - event: CreditPlanSet(address,uint128,uint128)
+          handler: handleCreditPlanSetEvent
+        - event: Deposited(indexed address,indexed address,indexed address,uint256,address)
+          handler: handleDepositedEvent
+        - event: Initialized(address,address,uint256,uint256)
+          handler: handleInitializedEvent
+        - event: InstantWithdrawal(indexed address,indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleInstantWithdrawalEvent
+        - event: LiquidityCapSet(uint256)
+          handler: handleLiquidityCapSetEvent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+        - event: PrizeStrategySet(indexed address)
+          handler: handlePrizeStrategySetEvent
+        - event: ReserveFeeCaptured(uint256)
+          handler: handleReserveFeeCapturedEvent
+        - event: ReserveWithdrawal(indexed address,uint256)
+          handler: handleReserveWithdrawalEvent
+        - event: TimelockDeposited(indexed address,indexed address,indexed address,uint256)
+          handler: handleTimelockDepositedEvent
+        - event: TimelockedWithdrawal(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTimelockedWithdrawalEvent
+        - event: TimelockedWithdrawalSwept(indexed address,indexed address,uint256,uint256)
+          handler: handleTimelockedWithdrawalSweptEvent
+        - event: TransferredExternalERC20(indexed address,indexed address,uint256)
+          handler: handleTransferredExternalERC20Event
+      file: ./src/CompoundPrizePoolMapping.ts

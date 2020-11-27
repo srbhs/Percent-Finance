@@ -1,0 +1,1119 @@
+type yVaultPrizePoolBuilderPrizePoolCreatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  creator: Bytes! # address
+  prizePool: Bytes! # address
+}
+
+type yVaultPrizePoolBuildercreateSingleRandomWinnerCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizePoolConfig_vault: Bytes! # address
+  prizePoolConfig_reserveRateMantissa: BigInt! # uint256
+  prizePoolConfig_maxExitFeeMantissa: BigInt! # uint256
+  prizePoolConfig_maxTimelockDuration: BigInt! # uint256
+  prizeStrategyConfig_rngService: Bytes! # address
+  prizeStrategyConfig_prizePeriodStart: BigInt! # uint256
+  prizeStrategyConfig_prizePeriodSeconds: BigInt! # uint256
+  prizeStrategyConfig_ticketName: String! # string
+  prizeStrategyConfig_ticketSymbol: String! # string
+  prizeStrategyConfig_sponsorshipName: String! # string
+  prizeStrategyConfig_sponsorshipSymbol: String! # string
+  prizeStrategyConfig_ticketCreditLimitMantissa: BigInt! # uint256
+  prizeStrategyConfig_ticketCreditRateMantissa: BigInt! # uint256
+  prizeStrategyConfig_externalERC20Awards: [Bytes]! # address[]
+  decimals: Int! # uint8
+  value0: Bytes! # address
+}
+
+type yVaultPrizePoolBuildercreateyVaultPrizePoolCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  config_vault: Bytes! # address
+  config_reserveRateMantissa: BigInt! # uint256
+  config_maxExitFeeMantissa: BigInt! # uint256
+  config_maxTimelockDuration: BigInt! # uint256
+  value0: Bytes! # address
+}
+
+type StakePrizePoolBuilderPrizePoolCreatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  creator: Bytes! # address
+  prizePool: Bytes! # address
+}
+
+type StakePrizePoolBuildercreateSingleRandomWinnerCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizePoolConfig_token: Bytes! # address
+  prizePoolConfig_maxExitFeeMantissa: BigInt! # uint256
+  prizePoolConfig_maxTimelockDuration: BigInt! # uint256
+  prizeStrategyConfig_rngService: Bytes! # address
+  prizeStrategyConfig_prizePeriodStart: BigInt! # uint256
+  prizeStrategyConfig_prizePeriodSeconds: BigInt! # uint256
+  prizeStrategyConfig_ticketName: String! # string
+  prizeStrategyConfig_ticketSymbol: String! # string
+  prizeStrategyConfig_sponsorshipName: String! # string
+  prizeStrategyConfig_sponsorshipSymbol: String! # string
+  prizeStrategyConfig_ticketCreditLimitMantissa: BigInt! # uint256
+  prizeStrategyConfig_ticketCreditRateMantissa: BigInt! # uint256
+  prizeStrategyConfig_externalERC20Awards: [Bytes]! # address[]
+  decimals: Int! # uint8
+  value0: Bytes! # address
+}
+
+type StakePrizePoolBuildercreateStakePrizePoolCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  config_token: Bytes! # address
+  config_maxExitFeeMantissa: BigInt! # uint256
+  config_maxTimelockDuration: BigInt! # uint256
+  value0: Bytes! # address
+}
+
+type SingleRandomWinnerBuilderSingleRandomWinnerCreatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  singleRandomWinner: Bytes! # address
+  ticket: Bytes! # address
+  sponsorship: Bytes! # address
+}
+
+type SingleRandomWinnerBuildercreateSingleRandomWinnerCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizePool: Bytes! # address
+  config_rngService: Bytes! # address
+  config_prizePeriodStart: BigInt! # uint256
+  config_prizePeriodSeconds: BigInt! # uint256
+  config_ticketName: String! # string
+  config_ticketSymbol: String! # string
+  config_sponsorshipName: String! # string
+  config_sponsorshipSymbol: String! # string
+  config_ticketCreditLimitMantissa: BigInt! # uint256
+  config_ticketCreditRateMantissa: BigInt! # uint256
+  config_externalERC20Awards: [Bytes]! # address[]
+  decimals: Int! # uint8
+  owner: Bytes! # address
+  value0: Bytes! # address
+}
+
+type RegistryOwnershipTransferredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type RegistryRegisteredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  pointer: Bytes! # address
+}
+
+type RegistryregisterCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type RegistryrenounceOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type RegistrytransferOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  newOwner: Bytes! # address
+}
+
+type ReserveOwnershipTransferredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type ReserveReserveRateMantissaSetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  rateMantissa: BigInt! # uint256
+}
+
+type ReserverenounceOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type ReservesetRateMantissaCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type ReservetransferOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  newOwner: Bytes! # address
+}
+
+type ReservewithdrawReserveCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizePool: Bytes! # address
+  to: Bytes! # address
+  value0: BigInt! # uint256
+}
+
+type ControlledTokenBuilderCreatedControlledTokenEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+}
+
+type ControlledTokenBuilderCreatedTicketEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+}
+
+type ControlledTokenBuildercreateControlledTokenCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  config_name: String! # string
+  config_symbol: String! # string
+  config_decimals: Int! # uint8
+  config_controller: Bytes! # address
+  value0: Bytes! # address
+}
+
+type ControlledTokenBuildercreateTicketCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  config_name: String! # string
+  config_symbol: String! # string
+  config_decimals: Int! # uint8
+  config_controller: Bytes! # address
+  value0: Bytes! # address
+}
+
+type ComptrollerBalanceDripActivatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  dripRatePerSecond: BigInt! # uint256
+}
+
+type ComptrollerBalanceDripDeactivatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+}
+
+type ComptrollerBalanceDripDrippedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  user: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerBalanceDripRateSetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  dripRatePerSecond: BigInt! # uint256
+}
+
+type ComptrollerDripTokenClaimedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  dripToken: Bytes! # address
+  user: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerDripTokenDrippedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  dripToken: Bytes! # address
+  user: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerOwnershipTransferredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type ComptrollerTransferredOutEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerVolumeDripActivatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  periodSeconds: BigInt! # uint256
+  dripAmount: BigInt! # uint256
+}
+
+type ComptrollerVolumeDripDeactivatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+}
+
+type ComptrollerVolumeDripDrippedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  user: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerVolumeDripPeriodEndedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  period: BigInt! # uint32
+  totalSupply: BigInt! # uint256
+  drippedTokens: BigInt! # uint256
+}
+
+type ComptrollerVolumeDripPeriodStartedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  period: BigInt! # uint32
+  dripAmount: BigInt! # uint256
+  endTime: BigInt! # uint256
+}
+
+type ComptrollerVolumeDripSetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  periodSeconds: BigInt! # uint256
+  dripAmount: BigInt! # uint256
+}
+
+type ComptrolleractivateBalanceDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  dripRatePerSecond: BigInt! # uint256
+}
+
+type ComptrolleractivateVolumeDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  periodSeconds: BigInt! # uint32
+  dripAmount: BigInt! # uint112
+  endTime: BigInt! # uint32
+}
+
+type ComptrollerbeforeTokenMintCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  measure: Bytes! # address
+  referrer: Bytes! # address
+}
+
+type ComptrollerbeforeTokenTransferCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  to: Bytes! # address
+  value2: BigInt! # uint256
+  measure: Bytes! # address
+}
+
+type ComptrollercaptureClaimsForBalanceDripsForPairsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  dripTokens: [Bytes]! # address[]
+}
+
+type ComptrollerclaimDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  dripToken: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollerclaimDripsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  dripTokens: [Bytes]! # address[]
+}
+
+type ComptrollerdeactivateBalanceDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  prevDripToken: Bytes! # address
+}
+
+type ComptrollerdeactivateVolumeDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  prevDripToken: Bytes! # address
+}
+
+type ComptrollermintAndCaptureVolumeDripsForPairsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  dripTokens: [Bytes]! # address[]
+}
+
+type ComptrollerrenounceOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type ComptrollersetBalanceDripRateCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  dripRatePerSecond: BigInt! # uint256
+}
+
+type ComptrollersetVolumeDripCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  source: Bytes! # address
+  measure: Bytes! # address
+  dripToken: Bytes! # address
+  isReferral: Boolean! # bool
+  periodSeconds: BigInt! # uint32
+  dripAmount: BigInt! # uint112
+}
+
+type ComptrollertransferOutCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ComptrollertransferOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  newOwner: Bytes! # address
+}
+
+type ComptrollerupdateActiveBalanceDripsForPairsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type ComptrollerupdateActiveVolumeDripsForPairsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type ComptrollerupdateAndClaimDripsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  dripTokens: [Bytes]! # address[]
+}
+
+type ComptrollerupdateDripsCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  dripTokens: [Bytes]! # address[]
+}
+
+type CompoundPrizePoolBuilderPrizePoolCreatedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  creator: Bytes! # address
+  prizePool: Bytes! # address
+}
+
+type CompoundPrizePoolBuildercreateCompoundPrizePoolCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  config_cToken: Bytes! # address
+  config_maxExitFeeMantissa: BigInt! # uint256
+  config_maxTimelockDuration: BigInt! # uint256
+  value0: Bytes! # address
+}
+
+type CompoundPrizePoolBuildercreateSingleRandomWinnerCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizePoolConfig_cToken: Bytes! # address
+  prizePoolConfig_maxExitFeeMantissa: BigInt! # uint256
+  prizePoolConfig_maxTimelockDuration: BigInt! # uint256
+  prizeStrategyConfig_rngService: Bytes! # address
+  prizeStrategyConfig_prizePeriodStart: BigInt! # uint256
+  prizeStrategyConfig_prizePeriodSeconds: BigInt! # uint256
+  prizeStrategyConfig_ticketName: String! # string
+  prizeStrategyConfig_ticketSymbol: String! # string
+  prizeStrategyConfig_sponsorshipName: String! # string
+  prizeStrategyConfig_sponsorshipSymbol: String! # string
+  prizeStrategyConfig_ticketCreditLimitMantissa: BigInt! # uint256
+  prizeStrategyConfig_ticketCreditRateMantissa: BigInt! # uint256
+  prizeStrategyConfig_externalERC20Awards: [Bytes]! # address[]
+  decimals: Int! # uint8
+  value0: Bytes! # address
+}
+
+type PermitAndDepositDaiOwnershipTransferredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type PermitAndDepositDaidepositToCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  dai: Bytes! # address
+  prizePool: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+  referrer: Bytes! # address
+}
+
+type PermitAndDepositDaipermitAndDepositToCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  dai: Bytes! # address
+  holder: Bytes! # address
+  nonce: BigInt! # uint256
+  expiry: BigInt! # uint256
+  allowed: Boolean! # bool
+  v: Int! # uint8
+  r: Bytes! # bytes32
+  s: Bytes! # bytes32
+  prizePool: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+  referrer: Bytes! # address
+}
+
+type PermitAndDepositDairenounceOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type PermitAndDepositDaitransferOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  newOwner: Bytes! # address
+}
+
+type CompoundPrizePoolAwardCapturedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolAwardedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  winner: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolAwardedExternalERC20Event @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  winner: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolAwardedExternalERC721Event @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  winner: Bytes! # address
+  token: Bytes! # address
+  tokenIds: [BigInt]! # uint256[]
+}
+
+type CompoundPrizePoolCompoundPrizePoolInitializedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  cToken: Bytes! # address
+}
+
+type CompoundPrizePoolControlledTokenAddedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+}
+
+type CompoundPrizePoolCreditBurnedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolCreditMintedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolCreditPlanSetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  token: Bytes! # address
+  creditLimitMantissa: BigInt! # uint128
+  creditRateMantissa: BigInt! # uint128
+}
+
+type CompoundPrizePoolDepositedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  to: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  referrer: Bytes! # address
+}
+
+type CompoundPrizePoolInitializedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  trustedForwarder: Bytes! # address
+  reserveRegistry: Bytes! # address
+  maxExitFeeMantissa: BigInt! # uint256
+  maxTimelockDuration: BigInt! # uint256
+}
+
+type CompoundPrizePoolInstantWithdrawalEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  from: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  redeemed: BigInt! # uint256
+  exitFee: BigInt! # uint256
+}
+
+type CompoundPrizePoolLiquidityCapSetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  liquidityCap: BigInt! # uint256
+}
+
+type CompoundPrizePoolOwnershipTransferredEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type CompoundPrizePoolPrizeStrategySetEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  prizeStrategy: Bytes! # address
+}
+
+type CompoundPrizePoolReserveFeeCapturedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolReserveWithdrawalEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolTimelockDepositedEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  to: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolTimelockedWithdrawalEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  from: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  unlockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolTimelockedWithdrawalSweptEvent @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  operator: Bytes! # address
+  from: Bytes! # address
+  amount: BigInt! # uint256
+  redeemed: BigInt! # uint256
+}
+
+type CompoundPrizePoolTransferredExternalERC20Event @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePooladdControlledTokenCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolawardCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+}
+
+type CompoundPrizePoolawardExternalERC20Call @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  externalToken: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolawardExternalERC721Call @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  externalToken: Bytes! # address
+  tokenIds: [BigInt]! # uint256[]
+}
+
+type CompoundPrizePoolbalanceCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePoolbalanceOfCreditCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  user: Bytes! # address
+  controlledToken: Bytes! # address
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePoolbeforeTokenTransferCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePoolcalculateEarlyExitFeeCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  controlledToken: Bytes! # address
+  amount: BigInt! # uint256
+  exitFee: BigInt! # uint256
+  burnedCredit: BigInt! # uint256
+}
+
+type CompoundPrizePoolcalculateTimelockDurationCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  controlledToken: Bytes! # address
+  amount: BigInt! # uint256
+  durationSeconds: BigInt! # uint256
+  burnedCredit: BigInt! # uint256
+}
+
+type CompoundPrizePoolcaptureAwardBalanceCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePooldepositToCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+  referrer: Bytes! # address
+}
+
+type CompoundPrizePoolinitializeCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolinitialize1Call @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolrenounceOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolsetCreditPlanOfCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolsetLiquidityCapCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolsetPrizeStrategyCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+}
+
+type CompoundPrizePoolsweepTimelockBalancesCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  users: [Bytes]! # address[]
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePooltimelockDepositToCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+}
+
+type CompoundPrizePooltransferExternalERC20Call @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  externalToken: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type CompoundPrizePooltransferOwnershipCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  newOwner: Bytes! # address
+}
+
+type CompoundPrizePoolwithdrawInstantlyFromCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+  maximumExitFee: BigInt! # uint256
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePoolwithdrawReserveCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  to: Bytes! # address
+  value0: BigInt! # uint256
+}
+
+type CompoundPrizePoolwithdrawWithTimelockFromCall @entity {
+  id: ID!
+  fromAddress: Bytes! # address
+  toAddress: Bytes # address
+  blockTimestamp: BigInt! # uint256
+  from: Bytes! # address
+  amount: BigInt! # uint256
+  controlledToken: Bytes! # address
+  value0: BigInt! # uint256
+}
